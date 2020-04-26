@@ -15,7 +15,7 @@ class Album {
     var posts: [Post] = []
     
     private init() {
-        for i in 1...12 {
+        for i in 1..<13 {
             let imageNumber = String(format: "%02d", i)
             let imageName = "pic\(imageNumber)"
             let post = Post(imageName: imageName)
