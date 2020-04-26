@@ -9,10 +9,13 @@
 import Foundation
 
 class Album {
+    
+    static let shared = Album()
+    
     var posts: [Post] = []
     
-    init() {
-        for i in 1...11 {
+    private init() {
+        for i in 1...12 {
             let imageNumber = String(format: "%02d", i)
             let imageName = "pic\(imageNumber)"
             let post = Post(imageName: imageName)
