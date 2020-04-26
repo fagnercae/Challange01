@@ -8,11 +8,13 @@
 
 import UIKit
 
+
+
 class ListImageViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    let album = Album()
+    let album = Album.shared  
     
     func registerListImageCell() {
         let nib = UINib.init(nibName: "ListImageTableViewCell", bundle: Bundle.main)
@@ -25,24 +27,37 @@ class ListImageViewController: UIViewController {
         registerListImageCell()
         tableView.dataSource = self
         tableView.delegate = self
-                
+  
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
     }
     
     
 }
 
 extension ListImageViewController: UITableViewDataSource {
+    
+    func configureCell(cell: ListImageTableViewCell, post: Post) {
+        
+        cell.photoImageView.image = UIImage(named: post.imageName)
+        cell.positiveLabel.text = String(post.positiveLikes)
+        cell.negativeLabel.text = String(post.negativeLikes)
+        cell.likesDelegate = self
+        
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         album.posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListImageTableViewCell", for: indexPath) as! ListImageTableViewCell
-        let imageName = UIImage(named: album.posts[indexPath.row].imageName)
-        cell.photoImageView.image = imageName
-        cell.positiveLabel.text = "0"
-        cell.negativeLabel.text = "0"
-        cell.likesDelegate = self
+        let post = album.posts[indexPath.row]
+        
+        configureCell(cell: cell, post: post)
+        
         return cell
     }
 }

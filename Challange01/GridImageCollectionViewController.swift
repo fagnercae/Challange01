@@ -10,6 +10,7 @@ import UIKit
 
 class GridImageCollectionViewController: UICollectionViewController {
     
+    let album = Album.shared
     let reuseIdentifier = "ImageCell"
     let spacing: CGFloat = 10
     let numberOfCollumns = 2
@@ -26,6 +27,13 @@ class GridImageCollectionViewController: UICollectionViewController {
         
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        view.setNeedsLayout()
+        view.layoutIfNeeded()
+        collectionView.reloadData()
+        
+    }
 
     // MARK: UICollectionViewDataSource
 
@@ -37,22 +45,33 @@ class GridImageCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 10
+        return album.posts.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ImagePhotoCell
-        let imageNumber = String.init(format: "%02d", indexPath.row + 1)
-        let imageName = UIImage(named: "pic\(imageNumber)")
+        let imageName = UIImage(named: album.posts[indexPath.row].imageName)
         cell.imageView.contentMode = .scaleAspectFill
         cell.imageView.image = imageName
-        return cell
+        cell.positiveLabel.text = String(album.posts[indexPath.row].positiveLikes)
         
+    
+        return cell
     }
 
-    // MARK: UICollectionViewDelegate
-    
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "postDetails" {
+            let destinationViewController = segue.destination as? ImageViewController
+            destinationViewController?.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+            let indexPaths = collectionView.indexPathsForSelectedItems
+            guard let firstIndexPath = indexPaths?.first else {
+                print("No indexPath selected")
+                return
+            }
+            let post = album.posts[firstIndexPath.row]
+            destinationViewController?.post = post
+        }
+    }
 }
 
 extension GridImageCollectionViewController: UICollectionViewDelegateFlowLayout {

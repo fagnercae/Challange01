@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7D2FF617244CEC0000E7E671 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2FF616244CEC0000E7E671 /* Post.swift */; };
 		7D2FF619244CEDB200E7E671 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2FF618244CEDB200E7E671 /* Album.swift */; };
+		7D3B4C00244E15D6002772F6 /* ImageViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3B4BFF244E15D6002772F6 /* ImageViewContoller.swift */; };
 		7D63464B24437ED700B0296E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D63464A24437ED700B0296E /* AppDelegate.swift */; };
 		7D63464D24437ED700B0296E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D63464C24437ED700B0296E /* SceneDelegate.swift */; };
 		7D63465224437ED700B0296E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D63465024437ED700B0296E /* Main.storyboard */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		7D2FF616244CEC0000E7E671 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		7D2FF618244CEDB200E7E671 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		7D3B4BFF244E15D6002772F6 /* ImageViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewContoller.swift; sourceTree = "<group>"; };
 		7D63464724437ED700B0296E /* Challange01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Challange01.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D63464A24437ED700B0296E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7D63464C24437ED700B0296E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,16 +72,17 @@
 			children = (
 				7D63464A24437ED700B0296E /* AppDelegate.swift */,
 				7D63464C24437ED700B0296E /* SceneDelegate.swift */,
+				7D63465824437ED900B0296E /* Info.plist */,
 				7D63465024437ED700B0296E /* Main.storyboard */,
 				7D63465524437ED800B0296E /* LaunchScreen.storyboard */,
 				7DFBF808244CE3130083DAB1 /* ListTableViewCell */,
 				7D63465324437ED800B0296E /* Assets.xcassets */,
 				7DB8FAE724439ADF00B37357 /* ListImageViewController.swift */,
-				7D63465824437ED900B0296E /* Info.plist */,
 				7DFBF802244CB4B70083DAB1 /* GridImageCollectionViewController.swift */,
 				7DFBF804244CB55C0083DAB1 /* ImagePhotoCell.swift */,
 				7D2FF616244CEC0000E7E671 /* Post.swift */,
 				7D2FF618244CEDB200E7E671 /* Album.swift */,
+				7D3B4BFF244E15D6002772F6 /* ImageViewContoller.swift */,
 			);
 			path = Challange01;
 			sourceTree = "<group>";
@@ -167,6 +170,7 @@
 			files = (
 				7D63464B24437ED700B0296E /* AppDelegate.swift in Sources */,
 				7DB8FAEB2443A6C800B37357 /* ListImageTableViewCell.swift in Sources */,
+				7D3B4C00244E15D6002772F6 /* ImageViewContoller.swift in Sources */,
 				7DFBF805244CB55C0083DAB1 /* ImagePhotoCell.swift in Sources */,
 				7DFBF803244CB4B70083DAB1 /* GridImageCollectionViewController.swift in Sources */,
 				7DB8FAE824439ADF00B37357 /* ListImageViewController.swift in Sources */,
