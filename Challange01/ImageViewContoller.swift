@@ -18,10 +18,6 @@ class ImageViewController: UIViewController {
     @IBOutlet weak var positiveLabel: UILabel!
     @IBOutlet weak var negativeLabel: UILabel!
     
-    @IBAction func dismiss(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-    
     override func viewDidLoad() {
         configureUI()
     }

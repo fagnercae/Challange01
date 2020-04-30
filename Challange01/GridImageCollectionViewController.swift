@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GridImageCollectionViewController: UICollectionViewController {
+class GridImageCollectionViewController: UICollectionViewController, UIAdaptivePresentationControllerDelegate {
     
     let album = Album.shared
     let reuseIdentifier = "ImageCell"
@@ -31,7 +31,7 @@ class GridImageCollectionViewController: UICollectionViewController {
     override func viewWillAppear(_ animated: Bool) {
         view.setNeedsLayout()
         view.layoutIfNeeded()
-        collectionView.reloadData()
+        
         
     }
 
@@ -62,7 +62,7 @@ class GridImageCollectionViewController: UICollectionViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "postDetails" {
             let destinationViewController = segue.destination as? ImageViewController
-            destinationViewController?.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+            destinationViewController?.presentationController?.delegate = self
             let indexPaths = collectionView.indexPathsForSelectedItems
             guard let firstIndexPath = indexPaths?.first else {
                 print("No indexPath selected")
@@ -72,6 +72,16 @@ class GridImageCollectionViewController: UICollectionViewController {
             destinationViewController?.post = post
         }
     }
+    
+    func presentationControllerWillDismiss(_ presentationController: UIPresentationController) {
+        collectionView.reloadData()
+        
+    }
+    
+//    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+//        collectionView.reloadData()
+//    }
+    
 }
 
 extension GridImageCollectionViewController: UICollectionViewDelegateFlowLayout {
